@@ -27,29 +27,37 @@ const Eligibility = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      // Send POST request to backend to save form data
-      const response = await fetch("http://localhost:5000/submit-form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        // Navigate to schemes page upon successful submission
-        navigate("/schemes");
-      } else {
-        // Handle error response
-        const errorData = await response.json();
-        alert("Error: " + JSON.stringify(errorData));
+    
+    // Check if age is greater than 18
+    if (formData.age > 18) {
+      try {
+        // Send POST request to backend to save form data
+        const response = await fetch("http://localhost:5000/submit-form", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+          // Navigate to schemes page upon successful submission
+          navigate("/schemes");
+        } else {
+          // Handle error response
+          const errorData = await response.json();
+          alert("Error: " + JSON.stringify(errorData));
+        }
+      } catch (error) {
+        // Handle network errors or server errors
+        console.error("Error submitting form:", error);
+        alert("Failed to submit form. Please try again later.");
       }
-    } catch (error) {
-      // Handle network errors or server errors
-      console.error("Error submitting form:", error);
-      alert("Failed to submit form. Please try again later.");
+    } else {
+      // Display alert if age is not greater than 18
+      alert("You are too young Dear , Currently not Eligible .");
     }
   };
+  
 
   return (
     <div className="eligibility-form-container ">

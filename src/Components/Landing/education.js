@@ -31,7 +31,7 @@ const Education = () => {
             "One-time assistance for a computer and accessories limited to Rs. 45,000"
           ],
           eligibility: "SC students admitted to notified institutions.",
-          link: "Click here for details"
+          link: "https://google.com "
         },
         {
           title: "Central Sector Scheme of Free Coaching for SC and OBC Students",

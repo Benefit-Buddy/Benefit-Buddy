@@ -1,6 +1,6 @@
 
 import "./Landing.css";
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate  } from "react-router-dom"; 
 import Eligibility from ".//Eligibility"; 
 import React, { useState } from "react";
 import Modal from "react-modal";
@@ -13,6 +13,11 @@ import { Link as ScrollLink } from 'react-scroll';
  
 
 const Landing = () => {
+
+  const navigate = useNavigate();
+
+
+  
   const [modalIsOpen, setModalIsOpen] = useState(false);
  
   
@@ -23,9 +28,19 @@ const EligibilityAccordion = () => {
     setIsOpen(!isOpen);
   }; }
   
-  const handleSubmit = () => {
-    
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent default behavior of the link
+    if (selectedState) {
+      if (selectedState === "Telangana") {
+        navigate("/schemesTelangana");
+      } else {
+        navigate("/Otherstates");
+      }
+    } else {
+      alert("Please select a state.");
+    }
   };
+  
 
 
  
@@ -394,12 +409,12 @@ const EligibilityAccordion = () => {
                 </div>
                 <div className=" scheme-box-submit">
                 <Link
-              to={`/StateSchemes`}
-              className="btn eligibility btn-outline-primary"
-              onClick={handleSubmit}
-            >
-              Submit
-            </Link>
+  to={`/schemes${selectedState}`}
+  className="btn eligibility btn-outline-primary"
+  onClick={handleSubmit}
+>
+  Submit
+</Link>
                 </div>
               </div>
             </div>
@@ -602,7 +617,7 @@ const EligibilityAccordion = () => {
           <hr className="hr-line-footer"></hr>
           <div className="footer-link footer-copyright text-center py-3">
             <Link to="/">
-              <b>© 2022 Copyright : BenefitBuddy</b>
+              <b>© 2024 Copyright : BenefitBuddy</b>
             </Link>
           </div>
         </div>

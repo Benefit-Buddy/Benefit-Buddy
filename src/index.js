@@ -19,6 +19,9 @@ import Health from "./Components/Landing/health";
 import Housing from "./Components/Landing/housing"; 
 import StateSchemes from "./Components/Landing/StateSchemes"; 
 import Feedback from "./Components/Landing/Feedback"; 
+import SchemesTelangana from "./Components/Landing/schemesTelangana"; 
+
+import Otherstates from "./Components/Landing/Otherstates"; 
 ReactDOM.render(
   <Router>
     <Routes>
@@ -40,6 +43,8 @@ ReactDOM.render(
       <Route path="/StateSchemes" element={<StateSchemes />} />
       <Route path="/housing" element={<Housing />} />
       <Route path="/Feedback" element={<Feedback />} />
+      <Route path="/schemesTelangana" element={<SchemesTelangana />} />
+      <Route path="/Otherstates" element={<Otherstates/>} />
 
     </Routes>
   </Router>,
