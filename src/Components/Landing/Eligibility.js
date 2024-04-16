@@ -32,7 +32,7 @@ const Eligibility = () => {
     if (formData.age > 18) {
       try {
         // Send POST request to backend to save form data
-        const response = await fetch("http://localhost:5000/submit-form", {
+        const response = await fetch("https://server-jvqt.onrender.com/submit-form", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
